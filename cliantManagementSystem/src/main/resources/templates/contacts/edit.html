@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmls:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout(~{::title},~{::body})}">
+<head>
+<title>連絡履歴編集 | 顧客管理システム</title>
+</head>
+
+<body>
+	<h1>連絡履歴の編集</h1>
+	<a href="./list.html" th:href="@{/contacts}">連絡履歴へ</a>
+	
+	<form action="#" th:action="@{/contacts/edit/{contactId}(contactId=${contact.contacts_id})}" th:object="${contact}" th:method="post">
+		<div>
+			id: 
+			<strong type="text" id="id" th:field="*{contacts_id}" th:text="${contact.contacts_id}">(id)</strong>
+		</div>
+		<div>
+			<label for="datetimeInput">送受信時間</label>
+			<input type="text" id="datetimeInput" th:field="*{send_and_receive_time}" th:value="${contact.send_and_receive_time}">
+			<p th:if="${#fields.hasErrors('send_and_receive_time')}" th:errors="*{send_and_receive_time}">(error)</p>
+		</div>
+		
+		<div>
+			<label for="SorRInput">送信(S)／受信(R)</label>
+			<input type="text" id="SorRInput" th:field="*{send_or_receive}" th:value="${contact.send_or_receive}">
+		</div>
+		<div>
+			<label for="titleInput">タイトル</label>
+			<input type="text" id="titleInput" th:field="*{title}" th:value="${contact.title}">
+			<p th:if="${#fields.hasErrors('title')}" th:errors="*{title}">(error)</p>
+		</div>
+		<div>
+			<label for="contentInput">内容</label>
+			<input type="text" id="contentInput" th:field="*{content}" th:value="${contact.content}">
+			<p th:if="${#fields.hasErrors('content')}" th:errors="*{content}">(error)</p>
+		</div>
+		<div>
+			<label for="cliantIdInput">クライアントID(デフォルト0）</label>
+			<input type="text" id="cliantIdInput" th:field="*{cliant_id}" th:value="${contact.cliant_id}">
+			<p th:if="${#fields.hasErrors('cliant_id')}" th:errors="*{cliant_id}">(error)</p>
+		</div>
+		<div>
+			<button type="submit">保存</button>
+		</div>
+	</form>
+
+</body>
+</html>

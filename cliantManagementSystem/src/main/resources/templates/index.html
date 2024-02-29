@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmls:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout(~{::title},~{::body})}"> 
+	
+<head>
+	<title>トップページ | 顧客管理システム</title>
+</head>
+<body>
+	<h1>顧客管理システム</h1>
+	<ul>
+		<li>
+			<a href="./cliants/list.html" th:href="@{/cliants}">顧客一覧</a>
+		</li>
+		<li>
+			<a href="./contacts/list.html" th:href="@{/contacts}">連絡履歴</a>
+		</li>
+		<li>
+			<a href="#" >トランザクション</a>
+		</li>
+	</ul>
+</body>
+</html>

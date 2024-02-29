@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmls:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout(~{::title},~{::body})}">
+<head>
+<title>顧客登録 | 顧客管理システム</title>
+</head>
+<body>
+	<h1>顧客登録</h1>
+	<a href="./list.html" th:href="@{/cliants}">顧客リストへ</a>
+	<form action="#" th:action="@{/cliants/creationForm}" th:method="post" th:object="${cliantForm}">
+		<div>
+			<label for="seiInput" class="form-label">姓（必須）</label>
+			<input type="text" id="seiInput" th:field="*{sei}" class="form-control"
+			th:classappend="${#fields.hasErrors('sei')} ? is-invalid">
+			<p class="invalid-feedback" th:if="${#fields.hasErrors('sei')}" th:errors="*{sei}">(error)</p>
+		</div>
+		<div>
+			<label for="nameInput" class="form-label">名（必須）</label>
+			<input type="text" id="meiInput" th:field="*{mei}" class="form-control"
+			th:classappend="${#fields.hasErrors('mei')} ? is-invalid">
+			<p class="invalid-feedback" th:if="${#fields.hasErrors('mei')}" th:errors="*{mei}">(error)</p>
+		</div>
+		<div>
+			<label for="mailaddressInput" class="form-label">メールアドレス（必須）</label>
+			<input type="text" id="mailaddressInput" th:field="*{mailaddress}" class="form-control"
+			th:classappend="${#fields.hasErrors('mailaddress')} ? is-invalid">
+			<p class="invalid-feedback" th:if="${#fields.hasErrors('mailaddress')}" th:errors="*{mailaddress}">(error)</p>
+		</div>
+		<div>
+			<label for="tellnumberInput" class="form-label">電話番号</label>
+			<input type="text" id="tellnumberInput" th:field="*{tellnumber}" class="form-control"
+			th:classappend="${#fields.hasErrors('tellnumber')} ? is-invalid">
+			<p class="invalid-feedback" th:if="${#fields.hasErrors('tellnumber')}" th:errors="*{tellnumber}">(error)</p>
+		</div>
+		<div>
+			<label for="regionInput" class="form-label">地域</label>
+			<input type="text" id="regionInput" th:field="*{region}" class="form-control"
+			th:classappend="${#fields.hasErrors('region')} ? is-invalid">
+			<p class="invalid-feedback" th:if="${#fields.hasErrors('region')}" th:errors="*{region}">(error)</p>
+		</div>
+		<div>
+			<label for="industryInput" class="form-label">業種</label>
+			<input type="text" id="industryInput" th:field="*{industry}" class="form-control"
+			th:classappend="${#fields.hasErrors('industry')} ? is-invalid">
+			<p class="invalid-feedback" th:if="${#fields.hasErrors('industry')}" th:errors="*{industry}">(error)</p>
+		</div>
+		<div>
+			<button type="submit" class="btn btn-primary mt-3">作成</button>
+		</div>
+	</form>
+
+</body>
+</html>

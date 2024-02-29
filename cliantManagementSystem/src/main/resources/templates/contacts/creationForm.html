@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmls:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout(~{::title},~{::body})}">
+<head>
+<title>連絡履歴作成 | 顧客管理システム</title>
+</head>
+<body>
+	<h1>連絡履歴作成</h1>
+	<a href="./list.html" th:href="@{/contacts}">連絡履歴へ</a>
+	
+	<form action="#" th:action="@{/contacts/creationForm}" th:method="post" th:object="${contactForm}" class="mt-3">
+		<div>
+			<label for="datetimeInput" class="form-label">送受信時間</label>
+			<input type="text" id="datetimeInput" th:field="*{send_and_receive_time}" th:value="${send_and_receive_time}"
+			class="form-control">
+			<p th:if="${#fields.hasErrors('send_and_receive_time')}" th:errors="*{send_and_receive_time}">(error)</p>
+		</div>
+		<div>
+			<label for="SorRInput" class="form-label">送信(S)／受信(R)</label>
+			<input type="text" id="SorRInput" th:field="*{send_or_receive}" class="form-control">
+			<p th:if="${#fields.hasErrors('send_or_receive')}" th:errors="*{Ssend_or_receive}">(error)</p>
+		</div>
+		<div>
+			<label for="titleInput" class="form-label">タイトル</label>
+			<input type="text" id="titleInput" th:field="*{title}" class="form-control">
+			<p th:if="${#fields.hasErrors('title')}" th:errors="*{title}">(error)</p>
+		</div>
+		<div>
+			<label for="contentInput" class="form-label">内容</label>
+			<input type="text" id="contentInput" th:field="*{content}" class="form-control">
+			<p th:if="${#fields.hasErrors('content')}" th:errors="*{content}">(error)</p>
+		</div>
+		<div>
+			<label for="cliantIdInput" class="form-label">クライアントID(デフォルト0）</label>
+			<input type="text" id="cliantIdInput" th:field="*{cliant_id}" class="form-control">
+			<p th:if="${#fields.hasErrors('cliant_id')}" th:errors="*{cliant_id}">(error)</p>
+		</div>
+		<div class="mt-3">
+			<button type="submit" class="btn btn-primary">作成</button>
+			<a href="./list.html" th:href="@{/contacts}" class="btn btn-secondary">キャンセル</a>
+		</div>
+	</form>
+
+</body>
+</html>

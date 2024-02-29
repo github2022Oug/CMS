@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmls:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout(~{::title},~{::body})}"> 
+<head>
+<meta charset="UTF-8">
+<title>連絡履歴 | 顧客管理システム</title>
+</head>
+
+<body>
+	<h1>連絡履歴</h1>
+	<a href="../index.html" th:href="@{/}">トップページ</a>
+	<a href="./creationForm.html" th:href="@{/contacts/creationForm}" class="btn btn-primary">作成</a>
+	
+	<table class="table mt-3">
+		<theread>
+			<tr>
+				<th>id</th>
+				<th>送受信時間</th>
+				<th>送信／受信</th>
+				<th>タイトル</th>
+				<th>内容</th>
+				<th>クライアントのid</th>
+				<th>クライアントの名前</th>
+			</tr>
+		</theread>
+		<tbody>
+			<tr th:each="contact : ${contactList}">
+				<th th:text="${contact.contacts_id}">(id)</th>
+				
+				<td th:text="${contact.send_and_receive_time}">(send_and_record_time)</td>
+				
+				<td th:text="${contact.send_or_receive ? '送信' : '受信'}">(send_or_receive)</td>
+				
+				<td th:text="${contact.title}">(title)</td>
+				
+				<td th:text="${contact.content}">(content)</td>
+				
+				<td th:text="${contact.cliant_id}">(cliant_id)</td>
+				
+				<td th:text="${contact.cliant_sei != null ? contact.cliant_sei : '---'} + '　' 
+				+ ${contact.cliant_mei != null ? contact.cliant_mei : '---'}">(cliant_name)</td>
+				
+				<td>
+					<a href="#" th:href="@{/contacts/edit/{contactId}(contactId=${contact.contacts_id})}"class="btn btn-primary">編集</a>
+				</td>
+				
+				<td>
+					<form action="#" th:action="@{/contacts/delete/{contactId}(contactId=${contact.contacts_id})}" method="post">
+						<button class="btn btn-secondary" type="submit">削除</button>
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>

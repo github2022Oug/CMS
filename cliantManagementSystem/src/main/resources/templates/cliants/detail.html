@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmls:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout(~{::title},~{::body})}">
+<head>
+<title>顧客詳細　｜　顧客管理システム</title>
+</head>
+<body>
+	<h1>顧客詳細</h1>
+	<a href="./list.html" th:href="@{/cliants}">一覧に戻る</a>
+	
+	<h2>情報一覧</h2>
+	<div>
+		<p>
+			<strong>ID：</strong><strong th:text="${cliant.id}">(id)</strong>
+		</p>
+		<p>
+			<strong>名前：</strong><strong th:text="${cliant.sei} + ' ' + ${cliant.mei}">(sei)</strong>	
+		</p>
+		<p>
+			<strong>メールアドレス：</strong><strong th:text="${cliant.mailaddress}">(mailaddress)</strong>	
+		</p>
+		<p>
+			<strong>電話番号：</strong><strong th:text="${cliant.tellnumber}">(tellnumber)</strong>
+		</p>
+		<p>
+			<strong>地域：</strong><strong th:text="${cliant.region}">(region)</strong>
+		</p>
+		<p>
+			<strong>業種：</strong><strong th:text="${cliant.industry}">(industry)</strong>
+		</p>
+		
+	</div>
+	
+	<h2>連絡履歴</h2>
+	<table class="table mt-3">
+		<theread>
+			<tr>
+				<th>ContactID</th>
+				<th>送受信時間</th>
+				<th>送信／受信</th>
+				<th>タイトル</th>
+				<th>内容</th>
+			</tr>
+		</theread>
+		<tbody>
+			<tr>
+				<th th:text="${record.contacts_id}">(contactID)</th>
+				
+				<td th:text="${record.send_and_receive_time}">(send_and_record_time)</td>
+				
+				<td th:text="${record.send_or_receive ? '送信' : '受信'}">(send_or_receive)</td>
+				
+				<td th:text="${record.title}">(title)</td>
+				
+				<td th:text="${record.content}">(content)</td>
+				
+<!--				<td>-->
+<!--					<a href="#" th:href="@{/contacts/edit/{contactId}(contactId=${contact.contacts_id})}"class="btn btn-primary">編集</a>-->
+<!--				</td>-->
+				
+<!--				<td>-->
+<!--					<form action="#" th:action="@{/contacts/delete/{contactId}(contactId=${contact.contacts_id})}" method="post">-->
+<!--						<button class="btn btn-secondary" type="submit">削除</button>-->
+<!--					</form>-->
+<!--				</td>-->
+			</tr>
+		</tbody>
+	</table>
+
+	
+	
+</body>
+</html>

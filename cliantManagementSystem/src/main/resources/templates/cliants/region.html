@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmls:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout(~{::title},~{::body})}">
+<head>
+<title>顧客リスト | 顧客管理システム</title>
+</head>
+<body>
+	<h1>顧客リスト</h1>
+	<a href="../index.html" th:href="@{/}">トップページ</a>
+	<a href="./creationForm.html" th:href="@{/cliants/creationForm}">作成</a>
+	
+
+	<table>
+		<theread>
+			<tr>
+				<th>id</th>
+				<th>名前</th>
+				<th>メールアドレス</th>
+				<th>電話番号</th>
+				<th>地域</th>
+				<th>業種</th>
+			</tr>
+		</theread>
+		<tbody>
+			<tr th:each="cliant : ${cliantList}">
+				<th th:text="${cliant.id}">(id)</th>
+				<td>
+					<a href="./detail.html" th:href="@{/cliants/{cliantId}(cliantId=${cliant.id})}" th:text="${cliant.sei} + ${cliant.mei}">(name)</a>
+				</td>
+				<td th:text="${cliant.mailaddress}">(mailaddress)</td>
+				<td th:text="${cliant.tellnumber}">(tellnumber)</td>
+				<td>
+					<a href="#" th:href="@{/cliants/region/{region}(region=${cliant.region})}" th:text="${cliant.region}">(region)</a>
+				</td>
+				<td th:text="${cliant.industry}">(industry)</td>
+				<td>
+					<a href="#" th:href="@{/cliants/edit/{cliantId}(cliantId=${cliant.id})}"><button>編集</button></a>
+				</td>
+				<td>
+					<form action="#" th:action="@{/cliants/delete/{cliantId}(cliantId=${cliant.id})}" method="post">
+						<button>削除</button>
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

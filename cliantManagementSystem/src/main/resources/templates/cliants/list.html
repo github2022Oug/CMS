@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmls:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout(~{::title},~{::body})}">
+<head>
+<title>顧客リスト | 顧客管理システム</title>
+</head>
+<body>
+	<h1>顧客リスト</h1>
+	<a href="../index.html" th:href="@{/}">トップページ</a>
+	<a href="./creationForm.html" th:href="@{/cliants/creationForm}" class="btn btn-primary">作成</a>
+	
+	<form action="#" th:action="@{/cliants}" th:method="post" th:object="${searchForm}" class="mt-3">
+		<div>
+			<label for="idSerch" class="form-label">id:</label>
+			<input type="number" id="idSerch" th:field="*{id}" class="form-controll">
+		</div>
+		<div>
+			<label for="seiSerch" class="form-label">姓:</label>
+			<input type="text" id="seiSerch" th:field="*{sei}" class="form-controll">
+		</div>
+		<div>
+			<label for="meiSerch" class="form-label">名:</label>
+			<input type="text" id="meiSerch" th:field="*{mei}" class="form-controll">
+		</div>
+		<div>
+			<label for="mailaddressSerch" class="form-label">メールアドレス:</label>
+			<input type="text" id="mailaddressSerch" th:field="*{mailaddress}" class="form-controll">
+		</div>
+		<div>
+			<label for="tellnumberSerch" class="form-label">電話番号:</label>
+			<input type="text" id="tellnumberSerch" th:field="*{tellnumber}" class="form-controll">
+		</div>
+		<strong>フィルター</strong>
+		<div>
+			<label for="regionFilter" class="form-label">地域:</label>
+			<input type="text" id="regionFilter" th:field="*{region}" class="form-controll">
+		</div>
+		<div>
+			<label for="industryFilter" class="form-label">業種:</label>
+			<input type="text" id="industryFilter" th:field="*{industry}" class="form-controll">
+		</div>
+		<button type="submit" class="btn btn-primary">検索</button>
+		<a href="./cliants/list.html" th:href="@{/cliants}" class="btn btn-secondary">リセット</a>
+	
+
+	
+
+	<table class="table">
+		<theread>
+			<tr>
+				<th>id</th>
+				<th>名前</th>
+				<th>メールアドレス</th>
+				<th>電話番号</th>
+				<th>地域</th>
+				<th>業種</th>
+			</tr>
+		</theread>
+		<tbody>
+			<tr th:each="cliant : ${cliantList}">
+				<th th:text="${cliant.id}">(id)</th>
+				<td>
+					<a href="./detail.html" th:href="@{/cliants/{cliantId}(cliantId=${cliant.id})}" th:text="${cliant.sei} + ${cliant.mei}">(name)</a>
+				</td>
+				<td th:text="${cliant.mailaddress}">(mailaddress)</td>
+				<td th:text="${cliant.tellnumber}">(tellnumber)</td>
+				<td>
+					<a href="#" th:href="@{/cliants/region/{region}(region=${cliant.region})}" th:text="${cliant.region}">(region)</a>
+				</td>
+				<td th:text="${cliant.industry}">(industry)</td>
+				<td>
+					<a href="#" th:href="@{/cliants/edit/{cliantId}(cliantId=${cliant.id})}" class="button">編集</a>
+				</td>
+				<td>
+					<form action="#" th:action="@{/cliants/delete/{cliantId}(cliantId=${cliant.id})}" method="post">
+						<button>削除</button>
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmls:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout(~{::title},~{::body})}">
+<head>
+<title>顧客編集 | 顧客管理システム</title>
+</head>
+<body>
+	<h1>顧客情報の編集</h1>
+	<a href="./list.html" th:href="@{/cliants}">顧客リストへ</a>
+	<form action="#" th:action="@{/cliants/edit/{id}(id=${cliant.id})}" th:object="${cliant}" th:method="post">
+		<div>
+			id: 
+			<strong type="text" id="id" th:field="*{id}" th:text="${cliant.id}">(id)</strong>
+		</div>
+		<div>
+			<label for="seiInput">姓（必須）</label>
+			<input type="text" id="seiInput" th:field="*{sei}" th:value="${cliant.sei}">
+			<p th:if="${#fields.hasErrors('sei')}" th:errors="*{sei}">(error)</p>
+		</div>
+		<div>
+			<label for="nameInput">名（必須）</label>
+			<input type="text" id="meiInput" th:field="*{mei}" th:value="${cliant.mei}">
+			<p th:if="${#fields.hasErrors('mei')}" th:errors="*{mei}">(error)</p>
+		</div>
+		<div>
+			<label for="mailaddressInput">メールアドレス（必須）</label>
+			<input type="text" id="mailaddressInput" th:field="*{mailaddress}" th:value="${cliant.mailaddress}">
+			<p th:if="${#fields.hasErrors('mailaddress')}" th:errors="*{mailaddress}">(error)</p>
+		</div>
+		<div>
+			<label for="tellnumberInput">電話番号</label>
+			<input type="text" id="tellnumberInput" th:field="*{tellnumber}" th:value="${cliant.tellnumber}">
+			<p th:if="${#fields.hasErrors('tellnumber')}" th:errors="*{tellnumber}">(error)</p>
+		</div>
+		<div>
+			<label for="regionInput">地域</label>
+			<input type="text" id="regionInput" th:field="*{region}" th:value="${cliant.region}">
+			<p th:if="${#fields.hasErrors('region')}" th:errors="*{region}">(error)</p>
+		</div>
+		<div>
+			<label for="industryInput">業種</label>
+			<input type="text" id="industryInput" th:field="*{industry}" th:value="${cliant.industry}">
+			<p th:if="${#fields.hasErrors('industry')}" th:errors="*{industry}">(error)</p>
+		</div>
+		<div>
+			<button type="submit">保存</button>
+		</div>
+	</form>
+
+</body>
+</html>
