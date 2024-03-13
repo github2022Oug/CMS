@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmls:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout(~{::title},~{::body})}"> 
+<html xmls:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout(~{::title},~{::body})}"
+		xmls:sec="http://www.thymleaf.org/thymleaf-extras-springsecurity5"> 
 	
 <head>
 	<title>トップページ | 顧客管理システム</title>
@@ -15,6 +16,12 @@
 		</li>
 		<li>
 			<a href="#" >トランザクション</a>
+		</li>
+		<li sec:authorize="hasAuthority('ADMIN')">
+			<a href="./users/list.html" th:href="@{/users}">ユーザー一覧</a>
+		</li>
+		<li>
+			<a href="./logout.html" th:href="@{/logout}">ログアウト</a>
 		</li>
 	</ul>
 </body>
