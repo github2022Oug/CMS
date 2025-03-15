@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmls:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout(~{::title},~{::body})}"
-		xmls:sec="http://www.thymleaf.org/thymleaf-extras-springsecurity5"> 
+		xmls:sec="http://www.thymleaf.org/thymleaf-extras-springsecurity6"> 
 	
 <head>
 	<title>トップページ | 顧客管理システム</title>
@@ -17,8 +17,9 @@
 		<li>
 			<a href="#" >トランザクション</a>
 		</li>
-		<li >
-<!--		sec:authorize="hasAuthority('ADMIN')">-->
+		<li sec:authorize="hasRole('ADMIN')">
+        <!-- sec:authorize="hasRole('ADMIN')" でを入力することでその権限を持つユーザーにだけ表示される-->
+		<!-- hasAuthorityと処理は同じだが別物なのでSecurityConfigに合わせる。 -->
 			<a href="./users/list.html" th:href="@{/users}">ユーザー一覧</a>
 		</li>
 		<li>
