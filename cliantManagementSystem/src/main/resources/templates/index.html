@@ -17,7 +17,8 @@
 		<li>
 			<a href="#" >トランザクション</a>
 		</li>
-		<li sec:authorize="hasAuthority('ADMIN')">
+		<li >
+<!--		sec:authorize="hasAuthority('ADMIN')">-->
 			<a href="./users/list.html" th:href="@{/users}">ユーザー一覧</a>
 		</li>
 		<li>

@@ -1,12 +1,7 @@
 package com.example.demo.domain.auth;
 
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.*;
-
 import java.util.Collections;
-import java.util.List;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -46,9 +41,9 @@ public class CustomUserDetailsService implements UserDetailsService{
 		
 	}
 		
-	private List<GrantedAuthority> toGrantedAuthorityList(User.Authority authority) {
-		return Collections.singletonList(new SimpleGrantedAuthority(authority.name()));
-	}
+//	private List<GrantedAuthority> toGrantedAuthorityList(User.Authority authority) {
+//		return Collections.singletonList(new SimpleGrantedAuthority(authority.name()));
+//	}
 		
 	
 	

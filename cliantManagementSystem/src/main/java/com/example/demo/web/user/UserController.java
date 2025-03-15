@@ -20,9 +20,9 @@ public class UserController {
 	
 	private final UserService userService;
 	
-	@GetMapping("/")
+	@GetMapping("")
 	public String  showList(Model model) {
-		model.addAttribute("UserList", userService.findAll());
+//		model.addAttribute("UserList", userService.findAll());
 		return "users/list";
 	}
 	@GetMapping("/creationForm")
